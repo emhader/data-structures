@@ -17,10 +17,15 @@ public class Business
         int count = 0;
         while (iterator.hasNext())
         {
+            //sets the iterator at the first thing in the linked list
             iterator.next();
+            //adds one to the count because the iterator moves by one
             count++;
+
+            //if the number remaainder n is 0 then they are thesame number
             if (count % n == 0)
             {
+                //removes the current element from the linked list
                 iterator.remove();
             }
         }
