@@ -6,10 +6,12 @@ import java.util.ArrayList;
 */
 public class Tree
 {
-    
+    private Node root;
     static class Node
     {
-        
+
+        Object data;
+        public List<Node> children;
 
         /**
             Computes the size of the subtree whose root is this node.
@@ -17,7 +19,12 @@ public class Tree
         */
         public int size()
         {
-            return 0;
+            int total = 1; 
+            for(Node child : this.children)
+            {
+                total += child.size();
+            }
+            return total;
         }
     }
 
@@ -27,7 +34,14 @@ public class Tree
     */
     public Tree(Object rootData)
     {
-        
+        //creating it is a node
+        this.root = new Node();
+
+        //setting the data of the root node to rootData
+        this.root.data = rootData;
+
+        //initializing the children of the root node to an empty list
+        this.root.children = new ArrayList<>();
     }
 
     /**
@@ -35,7 +49,8 @@ public class Tree
     */
     public void addSubtree(Tree subtree)
     {
-        
+        //adding the root will add all of the children of the subtree to the root of this tree
+        this.root.children.add(subtree.root);
     }
 
     /**
@@ -44,7 +59,8 @@ public class Tree
     */
     public int size() 
     {
-        return 0;
+        //wrote the method in the node class
+        return this.root.size();
     }
 
     // Additional methods will be added in later sections.
